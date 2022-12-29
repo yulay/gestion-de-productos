@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  marca: MyString
+  modelo: MyString
+  codigo: MyString
+  fecha_fab: 2022-10-12
+  precio: 9.99
+  observacion: MyText
+
+two:
+  marca: MyString
+  modelo: MyString
+  codigo: MyString
+  fecha_fab: 2022-10-12
+  precio: 9.99
+  observacion: MyText

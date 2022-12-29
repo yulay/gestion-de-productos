@@ -1,0 +1,76 @@
+<p id="notice"><%= notice %></p>
+
+<div>
+  <div style="float: left">
+    <h1>Listados</h1>
+  </div>
+  <div style="float: right">
+    <%= search_form_for @q do |f| %>
+      <%= f.label :marca_eq, 'Buscar por Marca:' %>
+      <%= f.search_field :marca_eq %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<% if params[:page].nil? %>
+  <%= @listados.length * 1 %> / <%= Listado.count %>
+<% else %>
+  <%= @listados.length * params[:page].to_i %> / <%= Listado.count %>
+<% end %>
+
+<div style="float: right">
+  <% if Listado.count != 0 %>
+    <%= link_to t('views.Destroy all'), destroyall_listados_path, method: :delete, data: { confirm: t('views.Are you sure all?') } %>
+  <% else %>
+    <div class="pagination">
+      <div class="previous_page disabled">
+        <span><%= t('views.Destroy all') %></span>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<table id="productostable">
+  <thead>
+    <tr>
+      <th><%= sort_link(@q, :marca, "Marca", default_order: :asc) %></th>
+      <th><%= sort_link(@q, :modelo, "Modelo", default_order: :asc) %></th>
+      <th><%= sort_link(@q, :codigo, "Código", default_order: :asc) %></th>
+      <th><%= sort_link(@q, :fecha_fab, "Fecha de fabricación", default_order: :asc) %></th>
+      <th><%= sort_link(@q, :precio, "Precio", default_order: :asc) %></th>
+      <th><%= sort_link(@q, :observacion, "Observación", default_order: :asc) %></th>
+      <th colspan="3">Operaciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @listados.each do |listado| %>
+      <tr>
+        <td><%= listado.marca %></td>
+        <td><%= listado.modelo %></td>
+        <td><%= listado.codigo %></td>
+        <td><%= listado.fecha_fab %></td>
+        <td><%= listado.precio %></td>
+        <td><%= listado.observacion %></td>
+        <td><%= link_to t('views.Show'), listado %></td>
+        <td><%= link_to t('views.Edit'), edit_listado_path(listado) %></td>
+        <td><%= link_to t('views.Destroy'), listado, method: :delete, data: { confirm: t('views.Are you sure?') } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= 
+  # will_paginate @listados, previous_label: t('views.previous label')
+  will_paginate @vehiculos, renderer: BootstrapPagination::Rails
+%>
+
+<br>
+
+<%= link_to t('views.New') + ' Listado', new_listado_path %>

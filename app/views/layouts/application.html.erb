@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <!-- Barra de navegación -->
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <%= link_to image_tag("logo.png", id: "logoimg"), root_path %>
+        <%= link_to "Primerproyect", root_path, id: "logo" %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+           <li><%= link_to "Bienvenido", bienvenido_index_path %></li>
+           <li><%= link_to "Home", home_prueba_path %></li>
+           <li><%= link_to "Productos", listados_path %></li>
+           <li><%= link_to "Adios", adios_index_path %></li>
+           <li><%= link_to "Nuevo", nuevo_index_path %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- Contenido suministrado por las vistas -->
+    <div class="container">
+      <%= yield %>
+    </div>
+
+    <!-- El pie de página -->
+    <div class="footer">
+      Copyright Julio González | <a href="mailto:julcgmoreno@gmail.com">julcgmoreno@gmail.com</a>
+    </div>
+  </body>
+</html>

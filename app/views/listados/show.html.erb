@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Marca:</strong>
+  <%= @listado.marca %>
+</p>
+
+<p>
+  <strong>Modelo:</strong>
+  <%= @listado.modelo %>
+</p>
+
+<p>
+  <strong>Codigo:</strong>
+  <%= @listado.codigo %>
+</p>
+
+<p>
+  <strong>Fecha fab:</strong>
+  <%= @listado.fecha_fab %>
+</p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @listado.precio %>
+</p>
+
+<p>
+  <strong>Observacion:</strong>
+  <%= @listado.observacion %>
+</p>
+
+<%= link_to t('views.Edit'), edit_listado_path(@listado) %> |
+<%= link_to t('views.Back'), listados_path %>
